@@ -1,0 +1,50 @@
+version: "3"
+
+services:
+  mysql:
+    image: mysql:8
+    container_name: mysql
+    volumes:
+      - ./.data/mysql:/var/lib/mysql
+    environment:
+      - TZ=Asia/Seoul
+      - MYSQL_USER=dankook
+      - MYSQL_PASSWORD=password
+      - MYSQL_DATABASE=dankook
+      - MYSQL_ROOT_PASSWORD=password
+    command:
+      - --lower_case_table_names=1
+      - --character-set-server=utf8mb4
+      - --collation-server=utf8mb4_unicode_ci
+    ports:
+      - "3306:3306"
+    networks:
+      - dankook
+
+  zookeeper:
+    image: wurstmeister/zookeeper
+    container_name: pzookeeper
+    ports:
+      - "2181:2181"
+    networks:
+      - dankook
+
+  kafka:
+    image: wurstmeister/kafka
+    container_name: kafka
+    ports:
+      - "9092:9092"
+    environment:
+      KAFKA_ADVERTISED_HOST_NAME: 127.0.0.1
+      KAFKA_ADVERTISED_PORT: 9002
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+      KAFKA_AUTO_CREATE_TOPICS_ENABLE: 'true'
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    networks:
+      - dankook
+
+networks:
+  dankook:
+    labels:
+      - dankook
