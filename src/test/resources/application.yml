@@ -1,0 +1,28 @@
+server:
+  port: 8080
+
+spring:
+  datasource:
+    driver-class-name: org.testcontainers.jdbc.ContainerDatabaseDriver
+    url: jdbc:tc:mysql:///dankook
+    username: dankook
+    password: password
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        show_sql: true
+        format_sql: true
+
+  data:
+    redis:
+      host: localhost
+      port: 6380
+
+jwt:
+  secret: I2NvbS5naXRodWIuZGFua29va191bml2LnNwcmluZy1ib290LWthZmthLWV4YW1wbGUjand0LnNlY3JldC5rZXkuZm9yLmF1dGhlbnRpY2F0aW9uIwo=
+  expired:
+    access: 86400000
+    refresh: 604800000
