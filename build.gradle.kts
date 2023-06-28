@@ -40,6 +40,9 @@ dependencies {
 
     implementation("org.springframework.kafka:spring-kafka")
 
+    // Swagger
+    implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.0.4")
+
     testImplementation("org.testcontainers:mysql")
     testImplementation("org.testcontainers:junit-jupiter")
 

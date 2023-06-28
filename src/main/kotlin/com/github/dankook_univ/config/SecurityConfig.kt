@@ -47,7 +47,7 @@ class SecurityConfig(
 
             .requestMatchers("/swagger-ui/**").permitAll()
             .requestMatchers("/swagger-resources/**").permitAll()
-            .requestMatchers("/v3/api-docs").permitAll()
+            .requestMatchers("/v3/api-docs/**").permitAll()
 
             .requestMatchers("/api/auth/**").permitAll()
             .requestMatchers("/api/auth/reissue").authenticated()
