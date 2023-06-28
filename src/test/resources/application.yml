@@ -21,6 +21,12 @@ spring:
       host: localhost
       port: 6380
 
+  kafka:
+    topic: test
+    consumer:
+      auto-offset-reset: earliest
+      group-id: dankook
+
 jwt:
   secret: I2NvbS5naXRodWIuZGFua29va191bml2LnNwcmluZy1ib290LWthZmthLWV4YW1wbGUjand0LnNlY3JldC5rZXkuZm9yLmF1dGhlbnRpY2F0aW9uIwo=
   expired:
